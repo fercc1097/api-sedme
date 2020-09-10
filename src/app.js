@@ -4,10 +4,11 @@ import morgan from 'morgan';
 //swagger
 const swaggerUi = require('swagger-ui-express');
 
-//impoeting routes
+//importing routes
 import groupRoutes from './routes/groups';
 import userRoutes from './routes/users';
 import rolRoutes from './routes/roles';
+import authRoutes from './routes/auth';
 
 //initalization
 const app = express();
@@ -17,6 +18,9 @@ const swaggerDoc = require('../swagger.json');
 app.use(morgan('dev')); //Va mostrando las peticiones por consola
 app.use(json()); //Poder ntender los archivos JSON
 //routes
+//auth
+app.use('/auth', authRoutes);
+//groups
 app.use('/api/groups', groupRoutes);
 //users
 app.use('/api/users', userRoutes);
